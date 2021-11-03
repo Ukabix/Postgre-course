@@ -146,7 +146,3 @@ WHERE staff_id = 2
 GROUP BY customer_id
 HAVING SUM(amount) > 100
 ORDER BY SUM(amount) DESC;
-
-/* --  --*/
-/* --  --*/
-/* --  --*/
