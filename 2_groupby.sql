@@ -106,11 +106,47 @@ GROUP BY customer_id
 ORDER BY SUM(amount) DESC
 LIMIT 5;
 
-/* -- HAVING clause = allows us to filter after an aggregation has taken place  --*/
+/* -- HAVING clause = allows us to filter after an aggregation has taken place,
+comes after GROUP BY call,
+WHERE on the other hand filters before aggregate function is run  --*/
 
+SELECT company, SUM(sales)
+FROM finance_table
+WHERE comapny !='Google'
+/* Google is not aggregated */
+GROUP BY company
+HAVING SUM(sales)<1000;
+/* for all comapnies without Google */
 
-/* --  --*/
-/* --  --*/
+SELECT customer_id, SUM(amount) FROM payment
+GROUP BY customer_id
+HAVING SUM(amount) > 100;
+
+SELECT store_id, COUNT(customer_id) FROM customer
+GROUP BY store_id
+HAVING COUNT (customer_id) > 300;
+
+/* -- what customer ids have 40 or more payments --*/
+
+SELECT * FROM payment
+LIMIT 1;
+
+SELECT customer_id, COUNT(amount) FROM payment
+GROUP BY customer_id
+HAVING COUNT(amount) >= 40
+ORDER BY COUNT(amount) DESC;
+
+/* -- what are the ids of customers who spent more than 100$ in payment transactions with our staff id 2? --*/
+
+SELECT * FROM payment
+LIMIT 1;
+
+SELECT customer_id, SUM(amount) FROM payment
+WHERE staff_id = 2
+GROUP BY customer_id
+HAVING SUM(amount) > 100
+ORDER BY SUM(amount) DESC;
+
 /* --  --*/
 /* --  --*/
 /* --  --*/
