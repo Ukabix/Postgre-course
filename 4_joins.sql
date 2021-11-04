@@ -142,13 +142,8 @@ SELECT * FROM Sales2021_Q2
 ORDER BY name;
 
 
+/* We need to alert our customers who live in California via email */
+
+/* Get a list of movies that "Nick Wahlberg" has been in */
 
 
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
-/*  */
